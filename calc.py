@@ -6,7 +6,7 @@ def calculation(a, operation, b):
         result = a + b
     elif operation == '-':
         result = a - b
-    elif operation == '/':
+    elif operation == '/' or '/':
         result = a / b
     elif operation == '*':
         result = a * b
@@ -29,6 +29,7 @@ def calc_ration():
 
     calc_result = calculation(number_a, user_expression[1], number_b)
     result = str("".join(map(str, user_expression)) + " = " + str(calc_result))
+    print(result)
     return result
 
 
@@ -50,4 +51,5 @@ def calc_complex():
     number_b = complex(float(user_expression[4]), b_imaginary_part)
     calc_result = calculation(number_a, user_expression[3], number_b)
     result = str("".join(map(str, user_expression)) + " = " + str(calc_result))
+    print(result)
     return result
