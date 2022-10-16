@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 def calculation(a, operation, b):
     result = None
     if operation == '+':
@@ -14,13 +16,19 @@ def calculation(a, operation, b):
 
 
 def calc_ration():
-    user_expression = input('Введите выражение для вычисления в формате: "A знак B"'
-                            '\nМежду числами и знаком ставьте пробелы:'
+    user_expression = input('Введите выражение для вычисления в формате: "A/B действие C/D, где:"'
+                            '\n A и B - числители первой и второй дроби'
+                            '\n C и D - знаменатели первой и второй дроби'
+                            '\nдействие - математическая операция которую нужно произвести с двумя числами'
+                            '\nМежду дробями и действием ставьте пробелы:'
                             '\n').split()
-    number_a, number_b = int(user_expression[0]), int(user_expression[2])
+    first_number, second_number = (user_expression[0]).split('/'), user_expression[2].split('/')
+
+    number_a = Fraction(int(first_number[0]), int(first_number[1]))
+    number_b = Fraction(int(second_number[0]), int(second_number[1]))
+
     calc_result = calculation(number_a, user_expression[1], number_b)
     result = str("".join(map(str, user_expression)) + " = " + str(calc_result))
-    print(result)
     return result
 
 
@@ -31,7 +39,7 @@ def calc_complex():
                             '\n действие - математическая операция которую нужно произвести с двумя числами'
                             '\nМежду числами и знаком ставьте пробелы:'
                             '\n').split()
-    a_imaginary_part, b_imaginary_part = user_expression[2], user_expression[6]
+    a_imaginary_part, b_imaginary_part = float(user_expression[2]), float(user_expression[6])
 
     if user_expression[1] == '-':
         a_imaginary_part = float(user_expression[2]) * -1
@@ -42,5 +50,4 @@ def calc_complex():
     number_b = complex(float(user_expression[4]), b_imaginary_part)
     calc_result = calculation(number_a, user_expression[3], number_b)
     result = str("".join(map(str, user_expression)) + " = " + str(calc_result))
-    print(result)
     return result
