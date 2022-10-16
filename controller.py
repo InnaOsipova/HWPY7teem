@@ -5,7 +5,7 @@ def ask_user ():
     choise = input("Какой калькулятор выбираем c - комплексными числами, r - рациональные")
     if choise == "c":
         l.add_log("Пользователь выбрал работу с комплексными числами")
-        c.calc_complex()
+        l.add_log(c.calc_complex())
     if choise == "r":
         l.add_log("Пользователь выбрал работу с комплексными числами")
-        c.calc_ration()
+        l.add_log(c.calc_ration())
